@@ -21,8 +21,8 @@ if (isset($_GET['edit'])) {
 
 if (isset($_GET['submit'])) {
     $add = $_GET['submit'];
-    $id = $msqlfetchEdit['id'];
-    $qvery_add = " UPDATE `menu` SET `title` = '$title' ,`url` ='$url' ,`parentID`= '$parrentid' WHERE `id`= %_GET[]";
+    $id = $_GET['id'];
+    $qvery_add = " UPDATE `menu` SET `title` = '$title' ,`url` ='$url' ,`parentID`= '$parrentid' WHERE `id`= $id";
     var_dump($msqlfetchEdit['id']) ;
     $msqlAdd = mysqli_query($mysqlconect, $qvery_add);
 
@@ -125,7 +125,7 @@ $msqlfetch = mysqli_fetch_all($result, 1);
                                     <input type="text" name="parrentid" id="exampleInputFile"
                                            value="<?= $msqlfetchEdit['parrentID'] ?>">
                                 </div>
-                                <input type="hidden" name="<?= $msqlfetchEdit['id'] ?>">
+                                <input type="hidden" name='id' value="<?= $msqlfetchEdit['id'] ?>">
                                 <?= var_dump($msqlfetchEdit['id']) ?>
                                 <input type="submit" name="submit" class="btn btn-default">
                             </form>
